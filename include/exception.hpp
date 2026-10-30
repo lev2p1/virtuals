@@ -11,6 +11,7 @@ namespace vt {
 		}
 
 		std::string what() { return message; }
+
 		virtual void printName() {
 			std::cout << "Base exception\n";
 		}
@@ -20,13 +21,17 @@ namespace vt {
 
 	class runtime_error : public exception {
 		using _Base = exception;
-
+		std::string info;
 	public:
 		explicit runtime_error() = delete;
-		explicit runtime_error(std::string what) : _Base(what) {}
+		explicit runtime_error(std::string what) : _Base(what), info("information about runtime_error") {}
 
 		void printName() override {
 			std::cout << "runtime_error exception\n";
+		}
+
+		void some_method() {
+			std::cout << info << '\n';
 		}
 	};
 }

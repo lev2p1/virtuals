@@ -11,7 +11,7 @@ namespace vt {
 		virtual double getPerimetr() = 0;
 	};
 
-	class circle : shape {
+	class circle : public shape {
 		double radius;
 	
 	public:

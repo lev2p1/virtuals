@@ -12,7 +12,7 @@ endif()
 project ("virtual")
 
 # Добавьте источник в исполняемый файл этого проекта.
-add_executable (virtual "virtual.cpp" "virtual.h")
+add_executable(virtual "virtual.cpp" "virtual.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET virtual PROPERTY CXX_STANDARD 20)

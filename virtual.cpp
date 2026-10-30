@@ -4,17 +4,32 @@
 #include "virtual.h"
 #include "include/shape.hpp"
 #include "include/exception.hpp"
+#include "include/smart_ptr.hpp"
+
+void print(vt::shape* sh) {
+	std::cout << sh->getSquare() << std::endl;
+}
+
+void create_add_check() {
+	int a;
+	std::cin >> a;
+	vt::smart_ptr<int> c(new int[10000000]);
+	std::cin >> a;
+}
 
 int main() {
 	try {
-		vt::circle crc(13);
-		std::cout << crc.getSquare() << std::endl;
-		throw vt::runtime_error("message");
+		vt::smart_ptr<vt::circle> c(new vt::circle(13));
+		std::cout << c->getSquare() << '\n';
+		create_add_check();
+		int a;
+		std::cin >> a;
+		throw vt::runtime_error("test exception");
 	}
 	catch (vt::exception& e) {
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << '\n';
 		e.printName();
-		std::cout << typeid(e).name();
+		((vt::runtime_error*)&e)->some_method();
 	}
 }
 
